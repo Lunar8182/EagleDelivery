@@ -44,3 +44,44 @@ python3 -m unittest tests.test_student.LearningTests -v
 python3 -m unittest discover -v
 python3 run_project.py train --start S --goal W --output results/baseline_SW
 ```
+
+
+
+python3 -m unittest tests.test_student.SearchTests -v
+python3 -m unittest tests.test_student.LearningTests -v
+
+# Baseline Map Searches (emu_campus.txt)
+python3 run_project.py search --algorithm bfs   --map maps/emu_campus.txt --start S --goal W
+python3 run_project.py search --algorithm astar --map maps/emu_campus.txt --start S --goal W
+
+python3 run_project.py search --algorithm bfs   --map maps/emu_campus.txt --start L --goal D
+python3 run_project.py search --algorithm astar --map maps/emu_campus.txt --start L --goal D
+
+python3 run_project.py search --algorithm bfs   --map maps/emu_campus.txt --start H --goal P
+python3 run_project.py search --algorithm astar --map maps/emu_campus.txt --start H --goal P
+
+# Detour Map Searches (emu_detour.txt)
+python3 run_project.py search --algorithm bfs   --map maps/emu_detour.txt --start S --goal W
+python3 run_project.py search --algorithm astar --map maps/emu_detour.txt --start S --goal W
+
+# Custom Map Search (my_campus.txt)
+python3 run_project.py search --algorithm astar --map maps/my_campus.txt --start S --goal W 
+
+
+# Baseline Delivery Tasks
+python3 run_project.py train --map maps/emu_campus.txt --start S --goal W --output results/baseline_SW
+python3 run_project.py train --map maps/emu_campus.txt --start L --goal D --output results/baseline_LD
+python3 run_project.py train --map maps/emu_campus.txt --start H --goal P --output results/baseline_HP
+
+# Custom Map Experiments (Varying Exploration Parameter Epsilon)
+python3 run_project.py train --map maps/my_campus.txt --start S --goal W --epsilon 0.05 --output results/custom_e005
+python3 run_project.py train --map maps/my_campus.txt --start S --goal W --epsilon 0.20 --output results/custom_e020
+python3 run_project.py train --map maps/my_campus.txt --start S --goal W --epsilon 0.50 --output results/custom_e050
+
+
+python3 summarize_results.py results/baseline_SW
+python3 summarize_results.py results/baseline_LD
+python3 summarize_results.py results/baseline_HP
+python3 summarize_results.py results/custom_e005
+python3 summarize_results.py results/custom_e020
+python3 summarize_results.py results/custom_e050
