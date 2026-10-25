@@ -67,8 +67,7 @@ python3 run_project.py search --algorithm astar --map maps/emu_detour.txt --star
 # Custom Map Search (my_campus.txt)
 python3 run_project.py search --algorithm astar --map maps/my_campus.txt --start S --goal W 
 
-
-# Baseline Delivery Tasks
+# Delivery Requirements (not custom)
 python3 run_project.py train --map maps/emu_campus.txt --start S --goal W --output results/baseline_SW
 python3 run_project.py train --map maps/emu_campus.txt --start L --goal D --output results/baseline_LD
 python3 run_project.py train --map maps/emu_campus.txt --start H --goal P --output results/baseline_HP
@@ -78,7 +77,7 @@ python3 run_project.py train --map maps/my_campus.txt --start S --goal W --epsil
 python3 run_project.py train --map maps/my_campus.txt --start S --goal W --epsilon 0.20 --output results/custom_e020
 python3 run_project.py train --map maps/my_campus.txt --start S --goal W --epsilon 0.50 --output results/custom_e050
 
-
+# Summarize the results
 python3 summarize_results.py results/baseline_SW
 python3 summarize_results.py results/baseline_LD
 python3 summarize_results.py results/baseline_HP
